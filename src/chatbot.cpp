@@ -45,6 +45,22 @@ ChatBot::~ChatBot()
 //// STUDENT CODE
 ////
 
+ChatBot::ChatBot(const ChatBot &source){
+    std::cout << "ChatBot Copy Constructor " << std::endl;
+    // From the class definiteion, we see that there are mainly three components that we need to copy
+    // _image
+    // _chatLogic
+    // _rootNode
+    
+    _image = new wxBitmap(filename, wxBITMAP_TYPE_PNG);
+
+    *_image = *source._image; //Copy the image data from source to 'this' object
+    _chatLogic = source._chatLogic;
+    _chatLogic->SetChatbotHandle(this);
+    _rootNode = source._rootNode
+}
+
+
 ////
 //// EOF STUDENT CODE
 

@@ -29,7 +29,18 @@ public:
 
     //// STUDENT CODE
     ////
+    // Copy constructor declaration
+    ChatBot(const ChatBot &source);
 
+    // Move constructor declaration
+    // Notice that we are using && to make sure of rvalue move symantics. Here the handle at the source will be useless when passed to the destination.
+    ChatBot( ChatBot &&source);
+
+    // Copy assignment operator declaration
+    ChatBot &operator=(const ChatBot &source);
+
+    // Move assignment operator declaration
+    ChatBot &operator=(ChatBot &&source);
     ////
     //// EOF STUDENT CODE
 
