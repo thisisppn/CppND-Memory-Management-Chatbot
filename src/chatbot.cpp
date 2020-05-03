@@ -38,7 +38,7 @@ ChatBot::~ChatBot()
     if(_image != NULL) // Attention: wxWidgets used NULL and not nullptr
     {
         delete _image;
-        _image = NULL;
+        // _image = NULL; // Here, we were trying to access _image after it was deleted. 
     }
 }
 
