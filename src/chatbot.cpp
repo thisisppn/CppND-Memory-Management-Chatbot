@@ -96,7 +96,7 @@ ChatBot &ChatBot::operator=(const ChatBot &source){
 
 
 ChatBot &ChatBot::operator=(ChatBot &&source){
-    std::cout << "ChatBot move operator " << std::endl;
+    std::cout << "ChatBot move assignment operator " << std::endl;
 
     _image = new wxBitmap();
 
