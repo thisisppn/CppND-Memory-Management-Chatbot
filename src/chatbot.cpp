@@ -52,14 +52,65 @@ ChatBot::ChatBot(const ChatBot &source){
     // _chatLogic
     // _rootNode
     
-    _image = new wxBitmap(filename, wxBITMAP_TYPE_PNG);
+    _image = new wxBitmap();
 
     *_image = *source._image; //Copy the image data from source to 'this' object
     _chatLogic = source._chatLogic;
     _chatLogic->SetChatbotHandle(this);
-    _rootNode = source._rootNode
+    _rootNode = source._rootNode;
 }
 
+ChatBot::ChatBot(ChatBot &&source){
+    std::cout << "ChatBot Move Constructor " << std::endl;
+    // From the class definiteion, we see that there are mainly three components that we need to copy
+    // _image
+    // _chatLogic
+    // _rootNode
+    
+    _image = new wxBitmap();
+
+    *_image = *source._image; //Copy the image data from source to 'this' object
+    _chatLogic = source._chatLogic;
+    _chatLogic->SetChatbotHandle(this);
+    _rootNode = source._rootNode;
+
+    // In addition to the copy above, we need to invalidate the data from the source object
+    source._image = nullptr;
+    source._chatLogic = nullptr;
+    source._rootNode = nullptr;
+}
+
+
+ChatBot &ChatBot::operator=(const ChatBot &source){
+    std::cout << "ChatBot assignment operator " << std::endl;
+
+    _image = new wxBitmap();
+
+    *_image = *source._image; //Copy the image data from source to 'this' object
+    _chatLogic = source._chatLogic;
+    _chatLogic->SetChatbotHandle(this);
+    _rootNode = source._rootNode;
+
+    return *this;
+}
+
+
+ChatBot &ChatBot::operator=(ChatBot &&source){
+    std::cout << "ChatBot move operator " << std::endl;
+
+    _image = new wxBitmap();
+
+    *_image = *source._image; //Copy the image data from source to 'this' object
+    _chatLogic = source._chatLogic;
+    _chatLogic->SetChatbotHandle(this);
+    _rootNode = source._rootNode;
+
+    source._image = nullptr;
+    source._chatLogic = nullptr;
+    source._rootNode = nullptr;
+    
+    return *this;
+}
 
 ////
 //// EOF STUDENT CODE
